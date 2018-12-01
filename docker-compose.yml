@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  nompass_app:
+    container_name: nompass_app
+    restart: always
+    build: ./nompass_app
+    ports:
+      - "8000:5000"
+    command: gunicorn -w 1 -b :5000 main:server
+
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - nompass_app
