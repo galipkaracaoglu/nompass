@@ -13,8 +13,12 @@ services:
     restart: always
     build: ./nompass_app
     ports:
-      - "8000:5000"
-    command: gunicorn -w 1 -b :5000 main:server
+      - "5000:5000"
+    expose:
+      - "5000"
+    command: gunicorn -w 1 -b :5000 main:app
+    networks:
+      - default
 
 
   nginx:
@@ -23,8 +27,12 @@ services:
     build: ./nginx
     ports:
       - "80:80"
-    depends_on:
-      - nompass_app
+  
+    networks:
+      - default
+    links:
+      - nompass_app:nompass_app
+  
 
 volumes:
     postgres_data:
