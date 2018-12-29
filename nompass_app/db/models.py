@@ -13,4 +13,7 @@ class Place(Base):
     cordinate_lat = Column(String(50))
     cordinate_lot = Column(String(50))
     general_point = Column(Integer,default=1)
+    city = Column(String(70))
+    semt = Column(String(70))
+
     
