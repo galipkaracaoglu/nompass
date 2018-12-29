@@ -1,6 +1,6 @@
 class Place:
 
-    def __init__(self,adress,lat,lot,name):
+    def __init__(self,adress,lat,lot,name,general_point):
 
 
 
@@ -8,10 +8,11 @@ class Place:
         self.adress=adress
         self.lat=lat
         self.lot=lot
+        self.general_point = general_point
+    
+    def __str__(self):
+        return self.name + " " + self.adress
+ 
 
 
 
-
-dd = Place("ujshkdfnp",5,6,"cafe")
-
-print(dd.adress)
